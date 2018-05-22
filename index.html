@@ -1,121 +1,51 @@
+<!DOCTYPE HTML>
+<!--
+	Aerial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-<head>
-<title>Music Player</title>
-</head>
-<body>
-<font size="8" color="blue"><center>190M Music Player Viewer</center></font>
-<font size="5" color="green"><center>Search Through Your Playlists and Music</center></font>
-<?php 
-if(isset($_POST['true'])){
-    
-}
-else {
-    $_POST['true']="HI";
-}
-$musicplayer=array(
-  "190M Rap.mp3"=>58,
-  "Be More.mp3"=>5438375,
-  "Drift Away.mp3"=>5724612,
-  "Hello.mp3"=>1871110,
-  "Just Because.mp3"=>4691825,
-  "Panda Sneeze.mp3"=>58
-  );
+	<head>
+		<title>Abilarsh Vijiananthan</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<meta name="google-site-verification" content="Ytq4lp_4p0YE5GZhNwQ4T9IvDvjSJKSfu8LuKG-dAzY" />
+	</head>
+	<body class="loading">
+		<div id="wrapper">
+			<div id="bg"></div>
+			<div id="overlay"></div>
+			<div id="main">
+				<!-- Header -->
+					<header id="header">
+						<h1>Abilarsh Vijiananthan</h1>
+						<p>Engineering Student &nbsp;&bull;&nbsp; McMaster University &nbsp;&bull;&nbsp; Canadian</p>
+						<nav>
+							<ul>
+								<li><a href="https://www.linkedin.com/in/abilarshviji/" class="icon fa-linkedin"><span class="label">Twitter</span></a></li>
+								<li><a href="https://github.com/AbilarshViji" class="icon fa-github"><span class="label">Github</span></a></li>
+                                <li><a href="resume.pdf" class="icon fa-file-text"><span class="label">Facebook</span></a></li>
+								<li><a href="mailto:website@abilarsh.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+							</ul>
+						</nav>
+					</header>
 
-  
-if ($_POST['true']=="addSong"){
-    add_songs_playlist ($_POST['songname'],$_POST["size"]);
-}
-function add_songs_playlist ($song, $size){
-global $musicplayer;
-  $data=array($song=>$size);
-$result=array_merge($musicplayer, $data);
-foreach ($result as $name=>$sizes){
-    echo $name."(".$sizes."&nbsp&nbsp"."b".")";
-    echo "</br>";
-  }
-}
+				<!-- Footer -->
+					<footer id="footer">
+						<span class="copyright">Design: <a href="http://html5up.net">HTML5 UP</a>.</span>
+					</footer>
 
-if ($_POST['true']=="removeSong"){
-    remove_songs_playlist ($_POST['songname'],$_POST["size"]);
-}
-function remove_songs_playlist ($name){
-  global $musicplayer;
-  foreach($musicplayer as $names){
-    if ($names=$name){
-      unset($musicplayer[$names]);
-    }
-  }
-  
-  foreach ($musicplayer as $name=>$sizes){
-    echo $name."(".$sizes."&nbsp&nbsp"."b".")";
-    echo "</br>";
-  }
-}
-if ($_POST['true']=="sortName" or $_POST['true']=="sortSize"){
-    sort_playlist ($_POST['songname'],$_POST["sortSize"]);
-}
-function sort_playlist($name,$size){
-  global $musicplayer;
-  if (isset($size)){
-    ksort($musicplayer);
-    foreach ($musicplayer as $names=>$sizes){
-      echo $names."(".$sizes."&nbsp&nbsp"."b".")";
-      echo "</br>";
-    }
-  }
-  else {
-    asort($musicplayer);
-    foreach ($musicplayer as $names=>$sizes){
-      echo $names."(".$sizes."&nbsp&nbsp"."b".")";
-      echo "</br>";
-    }
-  
-  }
-}
-if ($_POST['true']=="findStr"){
-    find_a_song ($_POST['songname']);
-}
-
-function find_a_song ($string) {
-  global $musicplayer;
-  foreach ($musicplayer as $names=>$sizes){
-    for($i=0;$i<strlen($names);$i++){
-      
-      if (substr($names,$i,strlen($string))==$string){
-          echo $names."(".$sizes."&nbsp&nbsp"."b".")";
-      echo "</br>";        
-      
-      }
-    }
-  } 
-}
-if ($_POST['true']=="smallSongs"){
-    small_songs ($_POST['songname']);
-}
-function small_songs($true){
-  global $musicplayer;
-  foreach($musicplayer as $names=>$sizes){
-    if ($sizes<=1000){
-      echo $names."(".$sizes."&nbsp&nbsp"."b".")";
-      echo "</br>";
-    }
-  }
-}
-
-?>
-<b>Please put input and select a setting to modify the playlist</b>
-<form action="" method="post">
-<input type="text" name="songname"><b>Song Name</b></br>
-<input type="text" name=size><b>Size of Song</b></br>
-<input type="radio" name=true value="addSong">Add Song To Playlist</br>
-<input type="radio" name=true value="removeSong">Remove Song from Playlist</br>
-<input type="radio" name=true value=findStr>Search for String in Playlist</br>
-<b>Sort Playlist by Name</b><input type="radio" name=true value=sortName></br>
-<b>Sort Playlist by Size</b><input type="radio" name=true value=sortSize></br>
-<b>Sort by Songs Smaller than 1000b</b><input type="radio" name=true value=smallSongs></br>
-<button type="submit" name="submit" value="submit">Submit</button>
-</form>
-
-</body>
-
+			</div>
+		</div>
+		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+		<script>
+			window.onload = function() { document.body.className = ''; }
+			window.ontouchmove = function() { return false; }
+			window.onorientationchange = function() { document.body.scrollTop = 0; }
+		</script>
+	</body>
 </html>
